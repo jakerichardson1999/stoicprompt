@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyStoic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">MyStoic</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="user_input">Enter an issue and get advice from the Stoics:</label>
+                <textarea class="form-control" id="user_input" name="user_input" rows="4" cols="50"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Get Stoic Advice</button>
+            <button type="button" class="btn btn-secondary mb-3 ml-3" onclick="newIssue()">Refresh</button>
+        </form>
+        <h2 class="my-4">Stoic Advice:</h2>
+        {% if stoic_advice %}
+            <p>{{ stoic_advice }}</p>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function newIssue() {
+            document.getElementById("user_input").value = "";
+            document.getElementsByTagName("p")[0].innerHTML = "";
+        }
+    </script>
+
+
+<div class="footer">
+    <p><p>Made by Jake Richardson - <a href="https://www.linkedin.com/in/jakerichardson1999/">LinkedIn</a></p></p>
+  </div>
+  
+  <style>
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+  
+</body>
+</html>
